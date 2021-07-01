@@ -18,28 +18,20 @@ namespace TencentCloud\Cii\V20210408\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * CreateStructureTask返回参数结构体
+ * DescribeStructureResult请求参数结构体
  *
- * @method string getMainTaskId() 获取创建的主任务号，用于查询结果
- * @method void setMainTaskId(string $MainTaskId) 设置创建的主任务号，用于查询结果
- * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
- * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+ * @method string getMainTaskId() 获取创建任务时返回的主任务ID
+ * @method void setMainTaskId(string $MainTaskId) 设置创建任务时返回的主任务ID
  */
-class CreateStructureTaskResponse extends AbstractModel
+class DescribeStructureResultRequest extends AbstractModel
 {
     /**
-     * @var string 创建的主任务号，用于查询结果
+     * @var string 创建任务时返回的主任务ID
      */
     public $MainTaskId;
 
     /**
-     * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-     */
-    public $RequestId;
-
-    /**
-     * @param string $MainTaskId 创建的主任务号，用于查询结果
-     * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+     * @param string $MainTaskId 创建任务时返回的主任务ID
      */
     function __construct()
     {
@@ -56,10 +48,6 @@ class CreateStructureTaskResponse extends AbstractModel
         }
         if (array_key_exists("MainTaskId",$param) and $param["MainTaskId"] !== null) {
             $this->MainTaskId = $param["MainTaskId"];
-        }
-
-        if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {
-            $this->RequestId = $param["RequestId"];
         }
     }
 }
