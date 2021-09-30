@@ -18,19 +18,45 @@ namespace TencentCloud\Cii\V20210408\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * CreateStructureTaskTest返回参数结构体
+ * DescribeStructureDifference返回参数结构体
  *
- * @method string getMainTaskId() 获取创建的主任务号，用于查询结果
- * @method void setMainTaskId(string $MainTaskId) 设置创建的主任务号，用于查询结果
+ * @method string getMainTaskId() 获取主任务号
+ * @method void setMainTaskId(string $MainTaskId) 设置主任务号
+ * @method integer getStatus() 获取结果状态：
+0：返回成功
+1：结果未生成
+2：结果生成失败
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setStatus(integer $Status) 设置结果状态：
+0：返回成功
+1：结果未生成
+2：结果生成失败
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method array getResults() 获取差异的结果数组
+ * @method void setResults(array $Results) 设置差异的结果数组
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
-class CreateStructureTaskTestResponse extends AbstractModel
+class DescribeStructureDifferenceResponse extends AbstractModel
 {
     /**
-     * @var string 创建的主任务号，用于查询结果
+     * @var string 主任务号
      */
     public $MainTaskId;
+
+    /**
+     * @var integer 结果状态：
+0：返回成功
+1：结果未生成
+2：结果生成失败
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $Status;
+
+    /**
+     * @var array 差异的结果数组
+     */
+    public $Results;
 
     /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -38,7 +64,13 @@ class CreateStructureTaskTestResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param string $MainTaskId 创建的主任务号，用于查询结果
+     * @param string $MainTaskId 主任务号
+     * @param integer $Status 结果状态：
+0：返回成功
+1：结果未生成
+2：结果生成失败
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param array $Results 差异的结果数组
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -56,6 +88,19 @@ class CreateStructureTaskTestResponse extends AbstractModel
         }
         if (array_key_exists("MainTaskId",$param) and $param["MainTaskId"] !== null) {
             $this->MainTaskId = $param["MainTaskId"];
+        }
+
+        if (array_key_exists("Status",$param) and $param["Status"] !== null) {
+            $this->Status = $param["Status"];
+        }
+
+        if (array_key_exists("Results",$param) and $param["Results"] !== null) {
+            $this->Results = [];
+            foreach ($param["Results"] as $key => $value){
+                $obj = new PerStructDifference();
+                $obj->deserialize($value);
+                array_push($this->Results, $obj);
+            }
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {
